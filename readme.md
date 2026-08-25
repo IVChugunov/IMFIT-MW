@@ -20,7 +20,7 @@ IMFIT-MW requires:
 - Astropy
 - lmfit
 
-The [standard PyImfit](https://pypi.org/project/pyimfit/) package is sufficient for running IMFIT-MW. However, it is strongly recommended to use the modified version available at [https://github.com/IVChugunov/pyimfit](https://github.com/IVChugunov/pyimfit). My modifications improve its performance by a factor of a few ([[#Performance and parallelization]]), making it comparable with original IMFIT; these modifications may probably be added to the standard package in the future.
+The [standard PyImfit](https://pypi.org/project/pyimfit/) package is sufficient for running IMFIT-MW. However, it is strongly recommended to use the modified version available at [https://github.com/IVChugunov/pyimfit](https://github.com/IVChugunov/pyimfit). My modifications improve its performance by a factor of a few ([see Performance and parallelization](#performance-and-parallelization)), making it comparable with original IMFIT; these modifications may probably be added to the standard package in the future.
 
 IMFIT-MW also supports custom IMFIT functions. If custom C++ IMFIT functions are required, PyImfit must be built from source with the corresponding IMFIT functions available in embedded IMFIT. My modification of PyImfit already features models of spiral arms, B/PS bulges and edge-on broken disc model.
 
@@ -301,7 +301,7 @@ The initial model files are ordinary IMFIT configuration files and are parsed by
 
 The multiwavelength residual is evaluated independently for each band. IMFIT-MW can therefore evaluate different bands in parallel.
 
-The recommended PyImfit version ([[#Requirements]]) contains modifications making this possible. Also, modified PyImfit is not bound to an old FFTW version which slowed down convolution considerably, unlike standard PyImfit.
+The recommended PyImfit version ([see Requirements](#requirements)) contains modifications making this possible. Also, modified PyImfit is not bound to an old FFTW version which slowed down convolution considerably, unlike standard PyImfit.
 
 The exact performance depends on the number and complexity of model components, image size, number of bands, PSF convolution and the optimization method. In general, single-thread performance is comparable with GALFITM. Parallelization impact depends on number of bands: for instance, with 5 bands parallelization the overall time may be decreased by a factor of 3.
 
