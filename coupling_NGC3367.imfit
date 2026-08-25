@@ -1,0 +1,27 @@
+X0       0
+Y0       0
+
+FUNCTION Sersic
+PA       0
+ell      0
+n        1
+I_e      4
+r_e      1
+
+FUNCTION FerrersBar2D
+PA       0
+ell      0
+c0       0
+n        0
+I_0      4
+a_bar    1
+
+FUNCTION Sersic
+PA       0
+ell      0
+n        1
+I_e      4
+r_e      1
+
+FUNCTION PointSource
+I_tot    4

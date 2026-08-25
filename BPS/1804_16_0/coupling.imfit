@@ -1,0 +1,28 @@
+X0       0
+Y0       0
+
+FUNCTION Sersic
+PA       0
+ell      0
+n        1
+I_e      3
+r_e      1
+
+
+FUNCTION SersicBPS
+PA       shared:Sersic__0__PA
+eps      0
+n        1
+I_e      3
+r_e      1
+k        0
+re_hx    1
+
+FUNCTION EdgeOnBrokenDisk
+PA       shared:Sersic__0__PA
+J_0      3
+h1       1
+h2       1
+r_break  1
+n        1
+z_0      1

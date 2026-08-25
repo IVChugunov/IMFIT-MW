@@ -1,0 +1,15 @@
+X0       0
+Y0       shared:X0__0
+
+FUNCTION Sersic
+PA       g
+ell      r
+n        g,i function:step
+I_e      3
+r_e      1
+
+FUNCTION Exponential
+PA       g
+ell      g
+I_0      g,r,i,z
+h        g,z

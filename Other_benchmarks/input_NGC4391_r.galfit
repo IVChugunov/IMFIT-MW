@@ -1,0 +1,129 @@
+================================================================================
+# INPUT FILE FOR GALFITM
+================================================================================
+# IMAGE and GALFIT CONTROL PARAMETER
+
+A) NGC4391/r/image.fits
+
+B) imgblock.fits
+
+C) NGC4391/r/sigma.fits
+
+D) NGC4391/r/psf.fits  #
+
+E) 1                   
+
+F) NGC4391/mask.fits
+
+# File with parameter constraints (ASCII file)
+G) constraints_NGC4391_r.galfitm
+
+# Image region to fit (xmin xmax ymin ymax)
+H) 1    300   1    300
+
+# Size of the convolution box (x y)
+I) 300    300
+
+# Magnitude photometric zeropoint (CSL of <nbands> values)
+J) 25
+
+# Plate scale (dx dy)   [arcsec per pixel]
+K) 0.25  0.25
+
+# Display type (regular, curses, both)
+O) regular             
+
+# Options: 0=normal run; 1,2=make model/imgblock & quit
+P) 0                   
+
+# Non-parametric component
+U) 0     # Standard parametric fitting
+   
+# MultiNest
+V) 0     # Use standard Levenburg-Marquardt algorithm
+
+# Output options
+# Valid options: blank,input,model,residual -- as usual
+#                component -- individual model components
+#                psf -- input psf image
+#                sigma -- sigma image (input or created)
+#                mask -- mask image
+#                nonparam -- nonparam image (if appropriate)
+#                datasub -- input minus nonparam image (if appropriate)
+#                nonparres -- residual minus nonparam image (if appropriate)
+#                itertable -- table of parameters at each iteration
+W) model  # == blank,input,model,residual and assumed if omitted
+
+
+# THE OBJECT LIST BELOW can be however long or short as the complexity
+# requires.  The user has complete freedom to mix and match the components
+# by duplicating each object block.
+
+# INITIAL FITTING PARAMETERS
+#
+# column 1: Parameter number
+#
+# column 2:
+# -- Parameter 0: the allowed functions are: sersic, nuker, expdisk
+#                 edgedisk, devauc, king, moffat, gaussian, ferrer, psf, sky
+# -- Parameter 1-10: value of the initial parameters
+# -- and Parameter C0: For diskiness/boxiness (<0 = disky, >0 = boxy)
+#             By default this is a CSL of the values of the parameter
+#             in each of the input bands.  This may be optionally indicated
+#         by putting the word 'band' at the end of the line (before any
+#             comment).
+#             Only specifying a single value with multiple input bands
+#             assumes the same value for all bands.
+#                 This can also optionally be specified in terms of Chebyshev
+#             coefficients by adding the word 'cheb' at the end of the line
+#             (before any comment).
+#             In this case one should give a CSL of at most <nbands> values
+#         corresponding to coefficients of a Chebyshev series.
+#             First value of the CSL specifies the parameter value at the
+#             average wavelength of the input bands.
+#             Additional values in the CSL specify the variation in that
+#             parameter value with wavelength, from linear (1st-order),
+#             quadratic (2nd-order), up to <nbands>-order (which should be
+#             equivalent to fitting the value independently for each band
+#         Values omitted from the end of the CSL are assumed to be zero.
+# -- Parameter Z: Outputting image options, the options are:
+#                 0 = normal, i.e. subtract final model from the data to create
+#             the residual image
+#             1 = Leave in the model -- do not subtract from the data
+#
+# column 3: This may be specified in one of two ways:
+#           An integer giving the order of the Chebyshev series , e.g.,
+#             0 = fixed to input value(s)
+#             1 = fit a constant offset from the input value(s)
+#             2 = fit a linear function of wavelength
+#             3 = fit a quadratic function of wavelength, etc.
+#           Note that, for >2, the input values are fit by a polynomial function
+#           of the specified order before fitting begins.
+#           Alternatively, one may give a CSL of at most <nbands> integers
+#           indicating whether or not that coefficient is allowed to vary
+#           (yes = 1, no = 0).  Values omitted from the end of the CSL are
+#           assumed to be zero.
+#
+# column 4: comment
+
+# Bulge
+
+ 0) sersic     # Object type
+ 1) 151. 151.  1 1    # position x y [pixel]  (constant with wavelength)
+ 3) 16.00 1     # total magnitude in each band
+ 4) 5.0  1     # R_e in each band
+ 5) 2.0  1     # Sersic exponent in each band
+ 9) 1.0  0     # axis ratio (b/a) in each band
+10) 0.0  0     # position angle (PA), same value in each band
+ Z) 0                  #  Skip this model in output image?  (yes=1, no=0)
+
+# Disc
+
+ 0) expdisk     # Object type
+ 1) 151. 151. 1 1    # position x y [pixel]  (constant with wavelength)
+ 3) 13.20 1     # total magnitude in each band
+ 4) 30.0  1     # Rs
+ 9) 0.95  1     # axis ratio (b/a) in each band
+10) 0.0  1     # position angle (PA), same value in each band
+ Z) 0                  #  Skip this model in output image?  (yes=1, no=0)
+

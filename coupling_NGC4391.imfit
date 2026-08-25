@@ -1,0 +1,15 @@
+X0       0
+Y0       0
+
+FUNCTION Sersic
+PA       0
+ell      0
+n        1
+I_e      3
+r_e      1
+
+FUNCTION Exponential
+PA       0
+ell      0
+I_0      3
+h        1

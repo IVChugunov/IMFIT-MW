@@ -1,0 +1,7 @@
+# Component/    parameter   constraint	Comment
+# operation	(see below)   range
+  1_2_3_4          x        offset
+  1_2_3_4          y        offset
+
+  1                n            0.5 to 8
+  2                re           10 to 200
