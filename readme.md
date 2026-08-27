@@ -8,6 +8,17 @@ The project is largely inspired by [GALFITM](https://www.nottingham.ac.uk/astron
 
 IMFIT-MW may therefore be particularly useful for users already familiar with IMFIT.
 
+## Showcase examples
+
+![](Other/generic_models.png)
+*NGC 3367 and NGC 4391 with their multiwavelength models. RGB image was constructed using z, r, g bands.*
+
+![](Other/BPS_models.png)
+*Examples of edge-on galaxies with X-structures at the centre, along with fitted multiwavelength models including B/PS bulge model. RGB image was constructed using z, r, g bands.*
+
+![](Other/TNG_spiral_model.png)
+*A spiral galaxy from TNG50-SKIRT Atlas and its multiwavelength model with spiral arms. RGB image was constructed using Ks, i, u bands.*
+
 ## Installation
 
 ### Requirements
